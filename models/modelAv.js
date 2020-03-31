@@ -13,3 +13,6 @@ const achievementAvSchema = new Schema(
     timestamps: true
   }
 );
+
+const AvData = mongoose.model("AvData", achievementAvSchema);
+module.exports = AvData;
