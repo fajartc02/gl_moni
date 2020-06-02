@@ -9,12 +9,13 @@ const { getAllLTBs, createLTB } = require("../controllers/contollerLTBData");
 const { createWfh, getWfhs, editWfh, deleteWfh } = require("../controllers/controllerInputWfh");
 const { createOee, getOee } = require('../controllers/controllerOeeMonitoring')
 
-const { createShd, getShdToday, getShdTodayShift, getShdFirstDate } = require('../controllers/controllerShdConf')
+const { createShd, getShdToday, getShdTodayShift, getShdFirstDate, filteredDateShd } = require('../controllers/controllerShdConf')
 
 router.post('/createShd', createShd)
 router.get('/getShdToday', getShdToday)
 router.get('/getShdFirstDate', getShdFirstDate)
 router.get('/getShdTodayShift/:shift', getShdTodayShift)
+router.get('/getShdFilteredDate/:date', filteredDateShd)
 
 router.post('/createOee', createOee)
 router.get('/getOee/:line', getOee)

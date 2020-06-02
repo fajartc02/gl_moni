@@ -38,16 +38,16 @@ module.exports = {
         })
     },
     getShdFirstDate: (req, res) => {
-        shdData.find({date: '2020-05-22'})
+        shdData.find({date: '2020-06-02'})
         .then(result => {
             res.status(200).json({
-                message: 'Success Get Data 22 May 2020',
+                message: 'Success Get Data 02 June 2020',
                 data: result
             })
         })
         .catch(err => {
             res.status(5000).json({
-                message: 'Error Get Data 22 May 2020',
+                message: 'Error Get Data 02 June 2020',
                 err: err.message
             })
         })
