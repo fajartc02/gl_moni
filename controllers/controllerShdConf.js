@@ -1,4 +1,5 @@
 const shdData = require("../models/modelShdConf");
+const axios = require("axios");
 
 module.exports = {
   createShd: (req, res) => {
@@ -85,7 +86,7 @@ module.exports = {
   },
   getOneData: (req, res) => {
     shdData
-      .findOne({ 
+      .findOne({
         name: { $regex: `${req.params.name}` },
         date: "2020-06-02",
       })
@@ -95,12 +96,12 @@ module.exports = {
           data: result,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({
           message: "Error Get One Data",
           err: err.message,
         });
-      })
+      });
   },
   getShdFirstDate: (req, res) => {
     shdData
@@ -118,6 +119,20 @@ module.exports = {
         });
       });
   },
+  getCovidData: (req, res) => {
+    axios
+      .get("https://api.kawalcorona.com/indonesia")
+      .then((resCovid) => {
+        console.log(resCovid);
+        res.status(200).json({
+          message: "Success Get Data Covid",
+          data: resCovid.data[0],
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   getShdToday: (req, res) => {
     let today = `${new Date().getFullYear()}-0${
       new Date().getMonth() + 1
@@ -131,7 +146,7 @@ module.exports = {
     }
     console.log(today);
     console.log("========SHD========");
-    
+
     shdData
       .find({ date: today })
       .then((result) => {
@@ -160,7 +175,7 @@ module.exports = {
     }
     console.log(today);
     console.log("========SHDTODAY========");
-    
+
     let shift = req.params.shift;
     console.log(shift);
 
@@ -192,7 +207,7 @@ module.exports = {
     }
     console.log(today);
     console.log("========SHDOK========");
-    
+
     let shift = req.params.shift;
     console.log(shift);
 

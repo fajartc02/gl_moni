@@ -28,6 +28,7 @@ const {
   fillShd,
   getShdTodayShiftOK,
   getOneData,
+  getCovidData,
 } = require("../controllers/controllerShdConf");
 
 router.post("/createShd", createShd);
@@ -37,6 +38,7 @@ router.get("/getShdFirstDate", getShdFirstDate);
 router.get("/getShdTodayShift/:shift", getShdTodayShift);
 router.get("/getShdTodayShiftOK/:shift", getShdTodayShiftOK);
 router.get("/getShdOneData/:name", getOneData);
+router.get("/getCovidData", getCovidData);
 
 router.post("/createOee", createOee);
 router.get("/getOee/:line", getOee);
